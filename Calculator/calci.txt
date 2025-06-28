@@ -1,0 +1,8 @@
+| Key         | Action                |
+| ----------- | --------------------- |
+| Numbers     | Add to input          |
+| `+ - * /`   | Operators             |
+| `.` or `%`  | Add decimal / percent |
+| `Enter`     | Calculate result      |
+| `Backspace` | Delete last character |
+| `C` or `c`  | Clear all             |

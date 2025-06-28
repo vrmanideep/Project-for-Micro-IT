@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rock Paper Scissors</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .game-container {
+      background: white;
+      border-radius: 16px;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      width: 90%;
+      max-width: 400px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .choices {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 25px;
+    }
+
+    .choice-btn {
+      border: none;
+      background-color: #eee;
+      border-radius: 12px;
+      padding: 10px;
+      width: 80px;
+      height: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: background 0.2s;
+    }
+
+    .choice-btn:hover {
+      background-color: #ddd;
+      cursor: pointer;
+    }
+
+    .label {
+      margin-top: 5px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .result {
+      font-size: 1.3rem;
+      margin-top: 10px;
+      color: #222;
+    }
+
+    .selection {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .score {
+      font-size: 1.1rem;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <h1>Rock Paper Scissors</h1>
+
+    <div class="choices">
+      <button class="choice-btn" onclick="play('rock')">
+        🪨
+        <div class="label">Rock</div>
+      </button>
+      <button class="choice-btn" onclick="play('paper')">
+        📄
+        <div class="label">Paper</div>
+      </button>
+      <button class="choice-btn" onclick="play('scissors')">
+        ✂️
+        <div class="label">Scissors</div>
+      </button>
+    </div>
+
+    <div class="result" id="result">Make your move!</div>
+    <div class="selection" id="selection"></div>
+    <div class="score" id="score">You: 0 | Computer: 0</div>
+  </div>
+
+  <script>
+    let userScore = 0;
+    let compScore = 0;
+
+    function play(userChoice) {
+      const choices = ['rock', 'paper', 'scissors'];
+      const computerChoice = choices[Math.floor(Math.random() * 3)];
+      let resultText = '';
+
+      if (userChoice === computerChoice) {
+        resultText = "It's a draw!";
+      } else if (
+        (userChoice === 'rock' && computerChoice === 'scissors') ||
+        (userChoice === 'paper' && computerChoice === 'rock') ||
+        (userChoice === 'scissors' && computerChoice === 'paper')
+      ) {
+        resultText = "You win!";
+        userScore++;
+      } else {
+        resultText = "You lose!";
+        compScore++;
+      }
+
+      document.getElementById('result').textContent = resultText;
+      document.getElementById('selection').innerHTML =
+        `You chose <b>${userChoice}</b> | Computer chose <b>${computerChoice}</b>`;
+      document.getElementById('score').textContent = `You: ${userScore} | Computer: ${compScore}`;
+    }
+  </script>
+</body>
+</html>

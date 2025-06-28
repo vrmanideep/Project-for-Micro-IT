@@ -1,1 +1,1 @@
-# Project-for-Micro-IT
+This repository  contains Calculator and Rock-Paper-Scissors projects.
